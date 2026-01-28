@@ -1,0 +1,433 @@
+/* Problems Page Styles */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap');
+
+.problems-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  color: #ffffff;
+  padding: 2rem;
+}
+
+.problems-header {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: rgba(220, 0, 0, 0.1);
+  border: 1px solid rgba(220, 0, 0, 0.3);
+  border-radius: 8px;
+  color: #dc0000;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background: rgba(220, 0, 0, 0.2);
+  border-color: #dc0000;
+  transform: translateX(-4px);
+}
+
+.back-button svg {
+  width: 20px;
+  height: 20px;
+}
+
+.problems-header h1 {
+  font-family: 'Orbitron', monospace;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 3px;
+  text-shadow: 0 0 20px rgba(220, 0, 0, 0.3);
+}
+
+.problems-container {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 2rem;
+}
+
+/* Sidebar */
+.problems-sidebar {
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.95) 0%, rgba(10, 10, 10, 0.9) 100%);
+  border: 1px solid rgba(220, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  height: fit-content;
+  max-height: calc(100vh - 200px);
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+}
+
+.problems-filter {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(220, 0, 0, 0.2);
+}
+
+.problems-filter h3 {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: #dc0000;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.filter-group {
+  margin-bottom: 1.5rem;
+}
+
+.filter-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 1px;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.filter-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  background: rgba(220, 0, 0, 0.05);
+  border: 1px solid rgba(220, 0, 0, 0.2);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(220, 0, 0, 0.1);
+  border-color: rgba(220, 0, 0, 0.4);
+  color: #ffffff;
+}
+
+.filter-btn.active {
+  background: rgba(220, 0, 0, 0.2);
+  border-color: #dc0000;
+  color: #dc0000;
+}
+
+.problems-list-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.problem-item {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(26, 26, 26, 0.5);
+  border: 1px solid rgba(220, 0, 0, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.problem-item:hover {
+  background: rgba(220, 0, 0, 0.05);
+  border-color: rgba(220, 0, 0, 0.4);
+  transform: translateX(4px);
+}
+
+.problem-item.selected {
+  background: rgba(220, 0, 0, 0.1);
+  border-color: #dc0000;
+}
+
+.problem-item.solved {
+  border-color: rgba(0, 255, 0, 0.3);
+}
+
+.problem-item.attempted {
+  border-color: rgba(255, 204, 0, 0.3);
+}
+
+.problem-number {
+  width: 36px;
+  height: 36px;
+  background: rgba(220, 0, 0, 0.1);
+  border: 1px solid rgba(220, 0, 0, 0.3);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Orbitron', monospace;
+  font-weight: 900;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.problem-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.problem-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.problem-badges {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* Main Content */
+.problem-detail {
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.95) 0%, rgba(10, 10, 10, 0.9) 100%);
+  border: 1px solid rgba(220, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+}
+
+.problem-detail-header {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid rgba(220, 0, 0, 0.2);
+}
+
+.problem-detail-header h2 {
+  font-family: 'Orbitron', monospace;
+  font-size: 2rem;
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.problem-detail-meta {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.acceptance {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+}
+
+.problem-description,
+.problem-topics,
+.problem-companies {
+  margin-bottom: 2rem;
+}
+
+.problem-description h3,
+.problem-topics h3,
+.problem-companies h3 {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #dc0000;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+.problem-description p {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.topics-list,
+.companies-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.topic-tag,
+.company-tag {
+  padding: 0.5rem 1rem;
+  background: rgba(220, 0, 0, 0.1);
+  border: 1px solid rgba(220, 0, 0, 0.3);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.company-tag {
+  background: rgba(255, 204, 0, 0.1);
+  border-color: rgba(255, 204, 0, 0.3);
+  color: #ffcc00;
+}
+
+.problem-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-family: 'Orbitron', monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.action-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #dc0000, #a00000);
+  border: none;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(220, 0, 0, 0.3);
+}
+
+.action-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(220, 0, 0, 0.5);
+}
+
+.action-btn.secondary {
+  background: rgba(220, 0, 0, 0.1);
+  border: 1px solid rgba(220, 0, 0, 0.3);
+  color: #dc0000;
+}
+
+.action-btn.secondary:hover {
+  background: rgba(220, 0, 0, 0.2);
+  border-color: #dc0000;
+  transform: translateY(-2px);
+}
+
+.diff-badge {
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.diff-badge.easy {
+  background: rgba(0, 255, 0, 0.15);
+  color: #00ff00;
+}
+
+.diff-badge.medium {
+  background: rgba(255, 204, 0, 0.15);
+  color: #ffcc00;
+}
+
+.diff-badge.hard {
+  background: rgba(220, 0, 0, 0.15);
+  color: #dc0000;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status-dot.solved {
+  background: #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.6);
+}
+
+.status-dot.attempted {
+  background: #ffcc00;
+  box-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+}
+
+.status-dot.unsolved {
+  background: #666;
+}
+
+/* Scrollbar */
+.problems-sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.problems-sidebar::-webkit-scrollbar-track {
+  background: rgba(10, 10, 10, 0.5);
+}
+
+.problems-sidebar::-webkit-scrollbar-thumb {
+  background: #dc0000;
+  border-radius: 4px;
+}
+
+.problems-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #ff0033;
+}
+
+@media (max-width: 1200px) {
+  .problems-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .problems-sidebar {
+    max-height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .problems-page {
+    padding: 1rem;
+  }
+  
+  .problems-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .problems-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .problem-detail {
+    padding: 1.5rem;
+  }
+  
+  .problem-actions {
+    flex-direction: column;
+  }
+  
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
