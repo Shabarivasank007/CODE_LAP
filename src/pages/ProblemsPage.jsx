@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ProblemPage.css';
+import ProblemSolverModal from '../components/ProblemSolverModal';
 
 const TOPICS = [
   {
@@ -391,6 +392,7 @@ const TOPICS = [
 const ProblemsPage = () => {
   const [selectedTopicId, setSelectedTopicId] = useState('arrays');
   const [selectedDifficulty, setSelectedDifficulty] = useState('Easy');
+  const [activeProblem, setActiveProblem] = useState(null);
 
   // Filter out start/finish nodes for problems display
   const problemTopics = TOPICS.filter(t => t.difficulties);
@@ -581,7 +583,16 @@ const ProblemsPage = () => {
 
           <div className="problems-grid">
             {problemsForDifficulty.map((problem, index) => (
-              <article key={index} className="race-card">
+              <article
+                key={index}
+                className="race-card clickable"
+                role="button"
+                tabIndex={0}
+                onClick={() => setActiveProblem(problem)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') setActiveProblem(problem);
+                }}
+              >
                 <div className="race-card-header">
                   <span className="race-lap">Lap {index + 1}</span>
                   <span className={`diff-pill ${selectedDifficulty.toLowerCase()}`}>
@@ -595,6 +606,14 @@ const ProblemsPage = () => {
           </div>
         </section>
       </div>
+
+      <ProblemSolverModal
+        isOpen={!!activeProblem}
+        onClose={() => setActiveProblem(null)}
+        problem={activeProblem}
+        difficulty={selectedDifficulty}
+        topicName={selectedTopic?.name}
+      />
     </div>
   );
 };

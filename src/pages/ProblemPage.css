@@ -285,6 +285,278 @@
   overflow: hidden;
 }
 
+.race-card.clickable {
+  cursor: pointer;
+}
+
+.race-card.clickable:focus {
+  outline: 2px solid rgba(220, 0, 0, 0.6);
+  outline-offset: 3px;
+}
+
+/* === PROBLEM SOLVER MODAL === */
+
+.solver-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1.5rem;
+}
+
+.solver-modal {
+  width: min(1200px, 96vw);
+  height: min(760px, 92vh);
+  background: linear-gradient(180deg, rgba(26, 26, 26, 0.98) 0%, rgba(10, 10, 10, 0.96) 100%);
+  border: 1px solid rgba(220, 0, 0, 0.35);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.solver-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(220, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.solver-header {
+  padding: 1.4rem 1.6rem 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.solver-title h2 {
+  margin: 0.25rem 0 0;
+  font-family: 'Orbitron', monospace;
+  font-size: 1.4rem;
+  letter-spacing: 1.5px;
+}
+
+.solver-topic {
+  font-family: 'Rajdhani', sans-serif;
+  color: rgba(255, 255, 255, 0.65);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.solver-tabs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.9rem 1.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.solver-tab {
+  background: rgba(220, 0, 0, 0.08);
+  border: 1px solid rgba(220, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.solver-tab.active {
+  background: rgba(220, 0, 0, 0.25);
+  border-color: rgba(220, 0, 0, 0.55);
+  color: #ffffff;
+}
+
+.solver-body {
+  padding: 1rem 1.6rem 1.4rem;
+  overflow: auto;
+  flex: 1;
+}
+
+.solver-desc {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.solver-note {
+  margin-top: 1rem;
+  border: 1px dashed rgba(255, 255, 255, 0.18);
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.solver-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.solver-label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: 'Rajdhani', sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 700;
+}
+
+.solver-select {
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 0.7rem;
+}
+
+.solver-run {
+  background: linear-gradient(135deg, #dc0000, #a00000);
+  border: none;
+  color: #fff;
+  padding: 0.75rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Orbitron', monospace;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+}
+
+.solver-run:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.solver-panels {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1rem;
+}
+
+.solver-panel {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.solver-panel-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 1.4px;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+}
+
+.solver-editor,
+.solver-stdin {
+  width: 100%;
+  min-height: 260px;
+  resize: vertical;
+  background: rgba(10, 10, 10, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.92);
+  padding: 0.8rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.solver-stdin {
+  min-height: 110px;
+}
+
+.solver-output {
+  min-height: 150px;
+  margin: 0;
+  padding: 0.8rem;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.9);
+  overflow: auto;
+}
+
+.solver-status {
+  margin-top: 0.5rem;
+  font-family: 'Rajdhani', sans-serif;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.solver-footnote {
+  margin-top: 1rem;
+  font-family: 'Rajdhani', sans-serif;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.platform-list {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
+}
+
+.platform-item {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 0.9rem;
+}
+
+.platform-name {
+  font-family: 'Orbitron', monospace;
+  letter-spacing: 1.2px;
+  font-size: 0.9rem;
+}
+
+.platform-hint {
+  font-family: 'Rajdhani', sans-serif;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.25rem;
+}
+
+.platform-link {
+  display: inline-block;
+  margin-top: 0.6rem;
+  color: #ffea00;
+  text-decoration: none;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .solver-panels {
+    grid-template-columns: 1fr;
+  }
+}
+
 .race-card::before {
   content: '';
   position: absolute;
