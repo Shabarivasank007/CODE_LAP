@@ -89,6 +89,21 @@ body {
   z-index: 2;
 }
 
+/* When user scrolls past the progress list, reveal the background video
+   in the left/right gutters while keeping the center content readable. */
+.dashboard.expose-video-gutters .video-overlay {
+  background-image:
+    linear-gradient(90deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0.6) 18%, rgba(10,10,10,0.9) 50%, rgba(10,10,10,0.6) 82%, rgba(10,10,10,0.15) 100%),
+    linear-gradient(180deg, rgba(10, 10, 10, 0.55) 0%, rgba(10, 10, 10, 0.75) 50%, rgba(10, 10, 10, 0.55) 100%);
+  background-blend-mode: multiply, normal;
+  transition: background-image 300ms ease, background-color 300ms ease;
+}
+
+/* Slightly reduce the overlay z-index on gutters so video shines through edges */
+.dashboard.expose-video-gutters .video-background::before {
+  opacity: 1;
+}
+
 @keyframes pulseGlow {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.7; }

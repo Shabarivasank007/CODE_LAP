@@ -18,6 +18,7 @@ const DashboardPage = () => {
   const [currentVideos, setCurrentVideos] = useState([]);
   const [showVideoPlayer, setShowVideoPlayer] = useState(false);
   const [selectedVideo, setSelectedVideo] = useState(null);
+  const [exposeGutters, setExposeGutters] = useState(false);
 
   // DSA concepts whitelist
   const dsaConcepts = [
@@ -91,10 +92,31 @@ const DashboardPage = () => {
 
   // Check if search query is DSA-related
   const isDSAConcept = (query) => {
-    const lowerQuery = query.toLowerCase().trim();
-    return dsaConcepts.some(concept => 
-      lowerQuery.includes(concept) || concept.includes(lowerQuery)
-    );
+    if (!query) return false;
+    const lower = query.toLowerCase().trim();
+    // normalize non-alphanumeric to spaces and split into tokens
+    const normalized = lower.replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    const tokens = normalized.split(' ');
+
+    // build n-grams (1..3) from tokens to detect multi-word concepts like "merge sort"
+    const ngrams = new Set();
+    for (let i = 0; i < tokens.length; i++) {
+      if (tokens[i]) ngrams.add(tokens[i]);
+      if (i + 1 < tokens.length) ngrams.add(tokens[i] + ' ' + tokens[i + 1]);
+      if (i + 2 < tokens.length) ngrams.add(tokens[i] + ' ' + tokens[i + 1] + ' ' + tokens[i + 2]);
+    }
+
+    for (const concept of dsaConcepts) {
+      const c = concept.toLowerCase();
+      if (ngrams.has(c)) return true;
+      if (normalized.includes(c) || c.includes(normalized)) return true;
+      // also match single token substrings (e.g., 'merge' matching 'merge sort')
+      for (const t of tokens) {
+        if (!t) continue;
+        if (c.includes(t) || t.includes(c)) return true;
+      }
+    }
+    return false;
   };
 
   // Refresh videos with DSA concepts (YouTube-like)
@@ -192,6 +214,28 @@ const DashboardPage = () => {
       setCarPosition(prev => (prev + 0.1) % 100);
     }, 50);
     return () => clearInterval(interval);
+  }, []);
+
+  // Expose video gutters when scrolling past the progress list bottom
+  useEffect(() => {
+    const onScroll = () => {
+      const progressEl = document.querySelector('.progress-list');
+      if (!progressEl) return;
+      const rect = progressEl.getBoundingClientRect();
+      // When the bottom of the progress list is above the middle of viewport,
+      // expose the background video on both sides.
+      const shouldExpose = rect.bottom < window.innerHeight * 0.55;
+      setExposeGutters(shouldExpose);
+      const root = document.querySelector('.dashboard');
+      if (root) {
+        root.classList.toggle('expose-video-gutters', shouldExpose);
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // run once on mount
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const progressCategories = [
