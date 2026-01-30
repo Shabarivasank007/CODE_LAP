@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import './ProblemPage.css';
 import ProblemSolverModal from '../components/ProblemSolverModal';
+import { getTestCasesForProblem } from '../data/testCasesData';
 
 const TOPICS = [
   {
@@ -397,7 +398,12 @@ const ProblemsPage = () => {
   // Filter out start/finish nodes for problems display
   const problemTopics = TOPICS.filter(t => t.difficulties);
   const selectedTopic = problemTopics.find((t) => t.id === selectedTopicId) || problemTopics[0];
-  const problemsForDifficulty = selectedTopic?.difficulties?.[selectedDifficulty] || [];
+  const problemsForDifficulty = useMemo(() => {
+    return (selectedTopic?.difficulties?.[selectedDifficulty] || []).map(problem => ({
+      ...problem,
+      testCases: getTestCasesForProblem(selectedTopicId, selectedDifficulty, problem.title)
+    }));
+  }, [selectedTopic, selectedDifficulty, selectedTopicId]);
 
   return (
     <div className="problems-page">

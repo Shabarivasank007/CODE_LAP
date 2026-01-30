@@ -321,6 +321,35 @@
   flex-direction: column;
 }
 
+/* Modal internal layout helpers */
+.solver-left {
+  display: flex;
+  flex-direction: column;
+  min-width: 45%;
+  overflow: auto;
+}
+
+.solver-right {
+  display: flex;
+  flex-direction: column;
+  min-width: 45%;
+  overflow: auto;
+}
+
+.editor-textarea {
+  width: 100%;
+  min-height: 320px;
+  max-height: calc(92vh - 240px);
+  resize: vertical;
+  border-radius: 6px;
+  color: #f0f0f0;
+  background: #2d2d2d;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.test-list { overflow: auto; }
+.test-pre { max-height: 260px; overflow: auto; white-space: pre-wrap; word-wrap: break-word; }
+
 .solver-close {
   position: absolute;
   top: 14px;
