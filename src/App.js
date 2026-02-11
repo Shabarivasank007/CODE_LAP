@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SplashScreen from "./pages/SplashScreen";
 import OnboardingScreen from "./pages/OnboardingScreen";
 import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";   // ✅ ADD THIS
 import DashboardPage from "./pages/DashboardPage";
 import ProblemsPage from "./pages/ProblemsPage";
 
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<SplashScreen />} />
         <Route path="/onboarding" element={<OnboardingScreen />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />   {/* ✅ ADD THIS */}
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/problems" element={<ProblemsPage />} />
       </Routes>

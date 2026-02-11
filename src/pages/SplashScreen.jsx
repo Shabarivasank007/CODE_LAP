@@ -1,16 +1,25 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "./SplashScreen.css";
 
-const SplashScreen = () => {
+export default function SplashScreen() {
   const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
-      navigate("/onboarding");
-    }, 2000);
-  }, []);
+      navigate("/login"); // or "/onboarding"
+    }, 3000);
+  }, [navigate]);
 
-  return <h1>Splash Screen</h1>;
-};
+  return (
+    <div className="splash-container">
+      <h1 className="splash-logo">
+        Code<span>Lap</span>
+      </h1>
 
-export default SplashScreen;
+      <p className="splash-text">Initializing DSA Engine...</p>
+
+      <div className="loader"></div>
+    </div>
+  );
+}
