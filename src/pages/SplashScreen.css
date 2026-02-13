@@ -23,8 +23,8 @@
   inset: 0;
   background: linear-gradient(
     120deg,
-    rgba(0, 0, 0, 0.9),
-    rgba(10, 20, 60, 0.78)
+    rgba(0, 0, 0, 0.92),
+    rgba(10, 20, 60, 0.82)
   );
   z-index: 0;
 }
@@ -38,31 +38,25 @@
     transparent 1px
   );
   background-size: 40px 40px;
-  opacity: 0.15;
+  opacity: 0.12;
   z-index: 1;
 }
 
-/* Main Splash Box */
-.splash-box {
-  width: 620px;
-  padding: 75px;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(0, 229, 255, 0.25);
-  text-align: center;
-  box-shadow: 0px 0px 70px rgba(0, 0, 0, 0.85);
+/* Splash Content (NO BOX) */
+.splash-content {
   z-index: 5;
-  animation: fadeIn 1.3s ease-in-out;
+  text-align: center;
+  animation: fadeZoom 1.2s ease;
+  padding: 40px;
 }
 
 /* Logo */
 .splash-logo {
-  font-size: 75px;
+  font-size: 95px;
   font-weight: 900;
   color: white;
   letter-spacing: 2px;
-  text-shadow: 0px 0px 30px rgba(0, 229, 255, 0.45);
+  text-shadow: 0px 0px 40px rgba(0, 229, 255, 0.55);
 }
 
 .splash-logo span {
@@ -71,8 +65,8 @@
 
 /* Tagline */
 .splash-tagline {
-  margin-top: 14px;
-  font-size: 16px;
+  margin-top: 18px;
+  font-size: 18px;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.75);
   letter-spacing: 1px;
@@ -80,55 +74,68 @@
 
 /* Loading Bar */
 .loading-bar {
-  margin-top: 45px;
-  height: 12px;
-  width: 100%;
+  margin-top: 55px;
+  height: 14px;
+  width: 520px;
+  max-width: 90%;
   background: rgba(255, 255, 255, 0.12);
-  border-radius: 12px;
+  border-radius: 20px;
   overflow: hidden;
+  box-shadow: 0px 0px 30px rgba(0, 229, 255, 0.2);
 }
 
 .loading-progress {
   height: 100%;
   width: 0%;
-  border-radius: 12px;
+  border-radius: 20px;
   background: linear-gradient(90deg, #00e5ff, #00ff85);
   animation: loadBar 3s linear forwards;
 }
 
 /* Loading Text */
 .loading-text {
-  margin-top: 20px;
-  font-size: 14px;
+  margin-top: 22px;
+  font-size: 15px;
   color: rgba(255, 255, 255, 0.65);
-  letter-spacing: 0.8px;
+  letter-spacing: 1px;
+  animation: blink 1.3s infinite alternate;
 }
 
 /* Glow Effect */
 .glow-circle {
   position: absolute;
-  width: 750px;
-  height: 750px;
+  width: 800px;
+  height: 800px;
   background: radial-gradient(circle, rgba(0, 229, 255, 0.22), transparent 70%);
-  filter: blur(65px);
+  filter: blur(70px);
   z-index: 2;
-  top: 8%;
-  right: 12%;
+  top: 5%;
+  right: 10%;
 }
 
-/* Fade Animation */
-@keyframes fadeIn {
+.glow-circle2 {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(0, 255, 133, 0.18), transparent 70%);
+  filter: blur(75px);
+  z-index: 2;
+  bottom: 5%;
+  left: 10%;
+}
+
+/* Animations */
+@keyframes fadeZoom {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: scale(0.92);
   }
   to {
     opacity: 1;
-    transform: translateY(0px);
+    transform: scale(1);
   }
 }
 
-/* Loading Animation */
 @keyframes loadBar {
   from {
     width: 0%;
@@ -138,14 +145,26 @@
   }
 }
 
+@keyframes blink {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
-  .splash-box {
-    width: 92%;
-    padding: 55px;
+  .splash-logo {
+    font-size: 65px;
   }
 
-  .splash-logo {
-    font-size: 55px;
+  .splash-tagline {
+    font-size: 15px;
+  }
+
+  .loading-bar {
+    width: 90%;
   }
 }

@@ -43,8 +43,8 @@
 
 /* Left Side */
 .login-left {
-  flex: 0.9;
-  padding: 60px;
+  flex: 1;
+  padding: 80px;
   color: white;
   z-index: 2;
   display: flex;
@@ -53,8 +53,8 @@
 }
 
 .brand {
-  font-size: 62px;
-  font-weight: 800;
+  font-size: 82px;
+  font-weight: 900;
   letter-spacing: 2px;
   text-shadow: 0px 0px 25px rgba(0, 229, 255, 0.3);
 }
@@ -64,45 +64,45 @@
 }
 
 .welcome-text {
-  font-size: 48px;
-  margin-top: 12px;
-  font-weight: 700;
+  font-size: 62px;
+  margin-top: 18px;
+  font-weight: 800;
 }
 
 .desc {
-  margin-top: 18px;
-  font-size: 16px;
-  line-height: 1.7;
-  max-width: 480px;
-  opacity: 0.82;
+  margin-top: 24px;
+  font-size: 20px;
+  line-height: 1.9;
+  max-width: 560px;
+  opacity: 0.85;
 }
 
 .features {
-  margin-top: 28px;
-  font-size: 16px;
-  line-height: 2.2;
+  margin-top: 40px;
+  font-size: 20px;
+  line-height: 2.6;
 }
 
 .features p {
   display: flex;
   align-items: center;
-  gap: 10px;
-  opacity: 0.9;
+  gap: 12px;
+  opacity: 0.95;
 }
 
 .social-icons {
-  margin-top: 40px;
+  margin-top: 45px;
   display: flex;
   gap: 15px;
 }
 
 .social-icons button {
-  height: 48px;
-  width: 48px;
+  height: 52px;
+  width: 52px;
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 20px;
   background: rgba(255, 255, 255, 0.12);
   color: white;
   transition: 0.3s;
@@ -117,10 +117,10 @@
 }
 
 .footer-note {
-  margin-top: 30px;
-  font-size: 13px;
-  opacity: 0.7;
-  letter-spacing: 0.6px;
+  margin-top: 35px;
+  font-size: 15px;
+  opacity: 0.75;
+  letter-spacing: 0.7px;
 }
 
 /* Right Side */
@@ -135,9 +135,9 @@
 }
 
 .login-box {
-  width: 460px;
-  padding: 50px;
-  border-radius: 22px;
+  width: 470px;
+  padding: 55px;
+  border-radius: 24px;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(18px);
   box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.75);
@@ -157,44 +157,54 @@
 /* Badge */
 .login-badge {
   display: inline-block;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border-radius: 20px;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 1px;
   font-weight: 600;
   color: #00ff85;
   border: 1px solid rgba(0, 255, 133, 0.4);
   background: rgba(0, 255, 133, 0.08);
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .login-box h2 {
   color: white;
-  font-size: 34px;
-  font-weight: 700;
+  font-size: 36px;
+  font-weight: 800;
 }
 
 .small-text {
   color: rgba(255, 255, 255, 0.75);
-  margin-top: 8px;
-  font-size: 14px;
+  margin-top: 10px;
+  font-size: 15px;
 }
 
 /* Inputs */
 .input-group {
   margin-top: 28px;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #00e5ff;
+  letter-spacing: 0.5px;
+  margin-left: 4px;
 }
 
 .input-group input {
   width: 100%;
-  padding: 15px;
+  padding: 18px;
   border-radius: 14px;
   border: none;
   outline: none;
   background: rgba(255, 255, 255, 0.12);
   color: white;
-  font-size: 15px;
+  font-size: 16px;
   transition: 0.3s;
 }
 
@@ -203,40 +213,19 @@
   border: 1px solid rgba(0, 229, 255, 0.5);
 }
 
-.input-group label {
-  position: absolute;
-  top: 15px;
-  left: 16px;
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
-  transition: 0.3s;
-  pointer-events: none;
-}
-
-.input-group input:focus + label,
-.input-group input:not(:placeholder-shown) + label {
-  top: -10px;
-  left: 14px;
-  font-size: 12px;
-  color: #00e5ff;
-  background: rgba(0, 0, 0, 0.55);
-  padding: 0px 8px;
-  border-radius: 8px;
-}
-
 /* Options */
 .options {
-  margin-top: 22px;
+  margin-top: 25px;
   display: flex;
   justify-content: space-between;
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.75);
 }
 
 .options a {
   color: #00e5ff;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .options a:hover {
@@ -246,12 +235,12 @@
 /* Button */
 .login-btn {
   width: 100%;
-  margin-top: 34px;
-  padding: 15px;
+  margin-top: 36px;
+  padding: 16px;
   border: none;
   border-radius: 16px;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 17px;
+  font-weight: 800;
   cursor: pointer;
   color: black;
   background: linear-gradient(90deg, #00e5ff, #00ff85);
@@ -265,16 +254,16 @@
 
 /* Register */
 .register-text {
-  margin-top: 26px;
+  margin-top: 28px;
   text-align: center;
-  font-size: 13px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.75);
 }
 
 .register-text a {
   color: #00ff85;
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .register-text a:hover {
@@ -284,10 +273,10 @@
 /* Glow behind box */
 .glow-circle {
   position: absolute;
-  width: 450px;
-  height: 450px;
+  width: 500px;
+  height: 500px;
   background: radial-gradient(circle, rgba(0, 229, 255, 0.22), transparent 70%);
-  filter: blur(40px);
+  filter: blur(45px);
   z-index: 2;
   right: 10%;
   top: 20%;
@@ -310,5 +299,21 @@
 
   .login-box {
     width: 90%;
+  }
+
+  .brand {
+    font-size: 55px;
+  }
+
+  .welcome-text {
+    font-size: 40px;
+  }
+
+  .desc {
+    font-size: 16px;
+  }
+
+  .features {
+    font-size: 16px;
   }
 }

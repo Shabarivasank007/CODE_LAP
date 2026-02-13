@@ -18,7 +18,8 @@ export default function SplashScreen() {
       <div className="splash-overlay"></div>
       <div className="grid-overlay"></div>
 
-      <div className="splash-box">
+      {/* Center Content (NO BOX) */}
+      <div className="splash-content">
         <h1 className="splash-logo">
           Code<span>Lap</span>
         </h1>
@@ -34,7 +35,9 @@ export default function SplashScreen() {
         <p className="loading-text">Loading your race track...</p>
       </div>
 
+      {/* Glow Effects */}
       <div className="glow-circle"></div>
+      <div className="glow-circle2"></div>
     </div>
   );
 }
